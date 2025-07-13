@@ -3,215 +3,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sunbelt Insight™ – Login Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunbelt Insight Preview</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-color: #f9f9f9;
+      --accent-color: #005E31;
+    }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --card-color: #1e1e1e;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
-      background-color: #005E31;
+      background-color: var(--accent-color);
       color: white;
-      padding: 20px;
+      padding: 1em;
       text-align: center;
-    }
-    nav, .tabs, .card, table, select, button, .login-box {
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
     }
     nav {
       display: flex;
-      flex-wrap: wrap;
-      background: #003d21;
+      justify-content: center;
+      background-color: #004a26;
     }
     nav button {
-      flex: 1;
-      padding: 15px;
+      background: none;
       border: none;
-      background: #004a26;
       color: white;
-      font-size: 16px;
+      padding: 1em;
       cursor: pointer;
+      font-size: 1em;
     }
-    nav button:hover {
-      background: #007c4b;
-    }
-    .tab {
-      display: none;
-      padding: 20px;
-    }
-    .tab.active {
-      display: block;
+    .container {
+      padding: 1em;
     }
     .card {
-      background: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
+      background-color: var(--card-color);
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      text-align: left;
-    }
-    th {
-      background: #ddd;
-    }
-    select, button {
-      padding: 6px 10px;
-      margin-top: 5px;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-    .login-box {
-      max-width: 400px;
-      padding: 20px;
-      background: white;
-      margin-top: 50px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-    .login-box input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
+    .theme-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
 
 <header>
-  <h1>Sunbelt Insight™</h1>
-  <p>Unified Monitoring Portal</p>
+  <h1>Sunbelt Insight™ – Preview</h1>
+  <p>Unified Monitoring Platform</p>
 </header>
 
-<div class="login-box" id="loginBox">
-  <h2>Client Login</h2>
-  <input type="text" id="username" placeholder="Enter Username"/>
-  <input type="password" id="password" placeholder="Enter Password"/>
-  <button onclick="login()">Login</button>
+<div class="theme-toggle">
+  <label>
+    <input type="checkbox" onchange="toggleTheme()"> Dark Mode
+  </label>
 </div>
 
-<div id="mainApp" style="display:none;">
-  <nav>
-    <button onclick="showTab('dashboard')">📊 Dashboard</button>
-    <button onclick="showTab('adminPanel')">🔧 Admin Panel</button>
-    <button onclick="showTab('reports')">📄 Reports</button>
-  </nav>
+<nav>
+  <button onclick="alert('Dashboard view')">Dashboard</button>
+  <button onclick="alert('Admin panel')">Admin</button>
+  <button onclick="alert('Clients')">Clients</button>
+  <button onclick="alert('Map View')">Map</button>
+</nav>
 
-  <div id="dashboard" class="tab active">
-    <div class="card">
-      <h2>Device: 30228 – Colas Rail</h2>
-      <p><strong>Location:</strong> North Yorkshire</p>
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-1.142%2C54.271%2C-1.130%2C54.279&layer=mapnik"></iframe>
-      <p><strong>Void Depth:</strong> 0.82 mm ⚠️</p>
-      <p><strong>Rail Temp:</strong> 28.7°C</p>
-      <p><strong>Tilt:</strong> 3.2°</p>
-      <p><strong>Displacement:</strong> 1.1 mm</p>
-      <p><strong>Signal Level:</strong> -72 dBm</p>
-    </div>
-
-    <div class="card">
-      <h2>Device: 30999 – Network Rail</h2>
-      <p><strong>Location:</strong> Kent – Tunnel Access</p>
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=0.127%2C51.293%2C0.145%2C51.300&layer=mapnik"></iframe>
-      <p><strong>Void Depth:</strong> 0.41 mm</p>
-      <p><strong>Rail Temp:</strong> 32.1°C</p>
-      <p><strong>Tilt:</strong> 2.1°</p>
-      <p><strong>Displacement:</strong> 0.9 mm</p>
-      <p><strong>Signal Level:</strong> -81 dBm</p>
-    </div>
+<div class="container">
+  <div class="card">
+    <h2>Asset: VoidSense – 30555</h2>
+    <p><strong>Status:</strong> Available</p>
+    <p><strong>Void Depth:</strong> 0.81 mm</p>
+    <p><strong>Rail Temp:</strong> 29.3°C</p>
+    <p><strong>Signal:</strong> -74 dBm</p>
   </div>
 
-  <div id="adminPanel" class="tab">
-    <div class="card">
-      <h2>Asset Allocation</h2>
-      <table>
-        <thead><tr><th>Device ID</th><th>Type</th><th>Status</th><th>Allocated</th><th>Assign</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>30555</td>
-            <td>VoidSense</td>
-            <td>Available</td>
-            <td>-</td>
-            <td>
-              <select>
-                <option value="">Select...</option>
-                <option value="Colas Rail">Colas Rail</option>
-                <option value="Network Rail">Network Rail</option>
-              </select>
-              <button onclick="allocate(this)">Allocate</button>
-            </td>
-          </tr>
-          <tr>
-            <td>30677</td>
-            <td>Tiltmeter</td>
-            <td>Available</td>
-            <td>-</td>
-            <td>
-              <select>
-                <option value="">Select...</option>
-                <option value="Colas Rail">Colas Rail</option>
-                <option value="Network Rail">Network Rail</option>
-              </select>
-              <button onclick="allocate(this)">Allocate</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div id="reports" class="tab">
-    <div class="card">
-      <h2>Weekly Summary</h2>
-      <p><strong>Colas Rail – North Yorkshire:</strong> Void readings trending high</p>
-      <p><strong>Network Rail – Kent:</strong> Tilt change detected 11/07</p>
-      <p><strong>Battery Status:</strong> All within thresholds</p>
-    </div>
+  <div class="card">
+    <h2>Asset: Tiltmeter – 30677</h2>
+    <p><strong>Status:</strong> On Hire (Network Rail)</p>
+    <p><strong>Tilt Angle:</strong> 3.1°</p>
+    <p><strong>Displacement:</strong> 0.9 mm</p>
+    <p><strong>Signal:</strong> -67 dBm</p>
   </div>
 </div>
 
 <script>
-function login() {
-  let user = document.getElementById('username').value.toLowerCase();
-  let pass = document.getElementById('password').value;
-  if ((user === "admin" || user === "client") && pass === "1234") {
-    document.getElementById('loginBox').style.display = 'none';
-    document.getElementById('mainApp').style.display = 'block';
-  } else {
-    alert("Incorrect login. Try admin / client with password 1234.");
+  function toggleTheme() {
+    const theme = document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', theme === 'light' ? 'dark' : 'light');
   }
-}
-function showTab(id) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-function allocate(btn) {
-  const row = btn.closest('tr');
-  const select = row.querySelector('select');
-  if (select.value) {
-    row.cells[3].innerText = select.value;
-    row.cells[2].innerText = "On Hire";
-    select.disabled = true;
-    btn.disabled = true;
-  } else {
-    alert("Please select a client.");
-  }
-}
 </script>
 
 </body>
